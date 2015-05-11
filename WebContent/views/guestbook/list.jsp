@@ -1,6 +1,5 @@
-<%@page import="com.sds.icto.mysite.vo.GuestBookVo"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="java.util.List" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html>
 <head>
@@ -33,23 +32,17 @@
 				<ul>
 					<li>
 						<table>
-						<%
-						List<GuestBookVo> list = (List<GuestBookVo>)request.getAttribute("list");
-						for(int i=0;i<list.size();i++){
-							GuestBookVo gb = list.get(i);
-						%>
+						<c:forEach items="${list }" var="vo" varStatus="status">
 							<tr>
-								<td><%=gb.getNo() %></td>
-								<td><%=gb.getName() %></td>
-								<td><%=gb.getRegDate() %></td>
-								<td><a href="">삭제</a></td>
+								<td>${status.count }</td>
+								<td>${vo.name }</td>
+								<td>${vo.regDate }</td>
+								<td><a href="/mysite/guestbook?a=deleteform&no=${vo.no }">삭제</a></td>
 							</tr>
 							<tr>
-								<td colspan=4><%=gb.getMessage() %></td>
+								<td colspan=4>${vo.message }</td>
 							</tr>
-						<%
-						}
-						%>
+						</c:forEach>
 						</table>
 						<br>
 					</li>
