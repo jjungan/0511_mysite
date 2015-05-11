@@ -1,0 +1,29 @@
+package com.sds.icto.mysite.servlet.action.member;
+
+import java.io.IOException;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.sds.icto.mysite.vo.MemberVo;
+import com.sds.icto.web.Action;
+
+public class MyInfoAction implements Action {
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, ClassNotFoundException, ServletException,
+			IOException {
+		HttpSession session = request.getSession();
+		MemberVo m = (MemberVo)session.getAttribute("authMember");
+		if(m == null){
+			response.sendRedirect("/mysite/views/member/loginform.jsp");
+			return;
+		}
+		response.sendRedirect("/mysite/views/member/myinfo.jsp");
+	}
+
+}
