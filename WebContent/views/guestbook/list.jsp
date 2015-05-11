@@ -50,10 +50,12 @@
 			</div>
 		</div>
 		<div id="navigation">
-			<jsp:include page="/views/include/navigation.jsp"/>
+			<c:import url="/views/include/navigation.jsp">
+				<c:param name="type" value="guestbook"></c:param>
+			</c:import>
 		</div>
 		<div id="footer">
-			<p>(c)opyright 2014 </p>
+			<jsp:include page="/views/include/footer.jsp"/>
 		</div>
 	</div>
 </body>

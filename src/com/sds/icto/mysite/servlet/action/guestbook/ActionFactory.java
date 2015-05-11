@@ -27,6 +27,10 @@ public class ActionFactory {
 			action = new GuestBookListAction();
 		}else if("insert".equals(a)){
 			action = new InsertAction();
+		}else if("deleteform".equals(a)){
+			action = new DeleteFormAction();
+		}else if("delete".equals(a)){
+			action = new DeleteAction();
 		}
 		
 		/* default action */

@@ -1,4 +1,4 @@
-package com.sds.icto.mysite.servlet.action.member;
+package com.sds.icto.mysite.servlet.action.guestbook;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -6,21 +6,20 @@ import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.sds.icto.mysite.vo.MemberVo;
 import com.sds.icto.web.Action;
 import com.sds.icto.web.WebUtil;
 
-public class JoinFormAction implements Action {
+public class DeleteFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ClassNotFoundException, ServletException,
 			IOException {
-		HttpSession session = request.getSession();
-		MemberVo authMember = (MemberVo)session.getAttribute("authMember");
-		WebUtil.forward("/views/member/joinform.jsp", request, response);
+		String no = request.getParameter("no");
+		request.setAttribute("no", no);
+		WebUtil.forward("/views/guestbook/deleteform.jsp", request, response);
+
 	}
 
 }
