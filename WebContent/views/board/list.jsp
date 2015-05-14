@@ -32,7 +32,7 @@
 				</table>
 			</div>
 			<div id="write">
-				<input type="button" id="writebtn" value="write">
+				<input type="button" id="writeBtn" value="write">
 			</div>
 		</div>
 		<div id="navigation">

@@ -32,19 +32,71 @@
 	margin: 10px;
 }
 
-#writebtn{
+#writeBtn{
 	padding: 3px 15px;
 }
 
 
 /* insertform */
-#content table #title input{
-	width: 530px;
-	
+
+#content #insertTable{
+	border-collapse: collapse;
+	width: 550px;
+	margin: 15px;
+}
+#content #insertTable th{
+	background-color: #aaa;
+	height: 30px;
+	color: #fff;
+	width:70px;
+	text-align: center;
 }
 
+#insertTable td input[type=text]{
+	border: 1px solid #fff;
+}
+#insertTable #submitTd{
+	text-align: center;
+}
+#insertTable #submitBtn{
+	padding: 2px 20px;
+	margin: 20px 0 0 0;
+	font-family: '맑은 고딕';
+	
+}
+#insertTable #nameTd, #insertTable #titleTd, #insertTable #viewCntTd{
+	border: 1px solid #aaa;
+}
+#insertTable #title, #insertTable #name, #insertTable #viewCnt{
+	width: 92%;
+	padding-left: 5px;
+	font: 1em '맑은 고딕', 돋움, 굴림;
+}
+#insertTable #textarea{
+	width: 95%;
+	border: 1px solid #fff;
+	height:250px;
+	font-family: '맑은 고딕';
+	padding: 10px;
+}
+#insertTable #textareaTd{
+	border:1px solid #aaa;
+}
 
-
+/* updateform */
+#insertTable #updateBtn, #insertTable #deleteBtn{
+	padding: 2px 20px;
+	margin: 20px 0 0 0;
+	font-family: '맑은 고딕';
+	
+}
+/* view */
+#insertTable #listBtn{
+	padding: 2px 20px;
+	margin: 20px 0 0 0;
+	font-family: '맑은 고딕';
+	
+}
 
 
 
