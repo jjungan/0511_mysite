@@ -15,7 +15,7 @@ label.block-label, fieldset			{ margin:5px 0 3px 0 }
 label.block-label, fieldset legend	{ margin-bottom:3px }
 
 fieldset				{ border:none }
-input[type="submit"]	{ display:block; width:80px; margin:20px auto }
+input[type="submit"]	{ display:block; width:80px; margin:20px auto;  padding: 3px;}
 
 #login-form	{
 	width:160px;
@@ -23,8 +23,25 @@ input[type="submit"]	{ display:block; width:80px; margin:20px auto }
 	border:1px solid #666;
 	border-radius: 10px;
 	margin:50px auto;
+	text-align: center;
+}
+#login-form input{
+	width: 150px;
+	height: 20px;
+}
+#login-form input[type=submit]{
+	padding: 3px 0;
+	height: 25px;
+}
+#login-form label{
+	text-align: left;
+	margin-left: 5px;
 }
 
 #user p		{ text-align:center; padding:10px}
 
 #user p.jr-success	{ height:200px }
+
+#formDiv{
+	margin-left: 32px;
+}

@@ -7,25 +7,37 @@
 	width: 540px;
 }
 
-#board table th, #board table td {
+#board #listTable th, #board #listTable td {
 	border: 1px solid #fff;
 	padding: 5px;
 }
 
-#board table th{
+#board #listTable th{
 	background-color: #888;
 	color: #fff;
 	text-align: center;
 	
 }
-#board table td{
+#board #listTable tr{
 	background-color: #f5f5f5;
+}
+#board #listTable td{
 	color: #888;
+	cursor: pointer;
 }
 
-#board table {
+#board #listTable {
 	width: 100%;
 	border-collapse: collapse;
+}
+#board .regDateTd {
+	width: 75px;
+}
+#board .hitTd {
+	width: 30px;
+}
+#board .indexTd {
+	width: 30px;
 }
 #write{
 	text-align: center;
@@ -36,12 +48,23 @@
 	padding: 3px 15px;
 }
 
+#searchTable{
+	width: 540px; 
+	margin-bottom: 5px;
+}
+#searchTable td{
+	text-align: right;
+}
+#searchTable input{
+	padding: 3px 15px;
+}
+
 
 /* insertform */
 
 #content #insertTable{
 	border-collapse: collapse;
-	width: 550px;
+	width: 540px;
 	margin: 15px;
 }
 #content #insertTable th{
@@ -52,7 +75,7 @@
 	text-align: center;
 }
 
-#insertTable td input[type=text]{
+#insertTable td input[type=text], #insertTable td input[type=password]{
 	border: 1px solid #fff;
 }
 #insertTable #submitTd{
@@ -64,10 +87,10 @@
 	font-family: '맑은 고딕';
 	
 }
-#insertTable #nameTd, #insertTable #titleTd, #insertTable #viewCntTd{
+#insertTable #nameTd, #insertTable #titleTd, #insertTable #viewCntTd,#insertTable #passwordTd{
 	border: 1px solid #aaa;
 }
-#insertTable #title, #insertTable #name, #insertTable #viewCnt{
+#insertTable #title, #insertTable #name, #insertTable #viewCnt, #insertTable #password{
 	width: 92%;
 	padding-left: 5px;
 	font: 1em '맑은 고딕', 돋움, 굴림;
@@ -96,6 +119,13 @@
 	margin: 20px 0 0 0;
 	font-family: '맑은 고딕';
 	
+}
+/* inserterror */
+#wrongPassword{
+	width:100%;
+	text-align: center;
+	color: rgb(231, 108, 127);	
+	margin-top: 15px;
 }
 
 

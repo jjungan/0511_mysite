@@ -24,3 +24,9 @@ CREATE SEQUENCE board_no_seq
  
  
  delete from board;
+ select * from Board where title like '%배%' order by no desc;
+ 
+ 
+ 
+ 
+ 

@@ -25,13 +25,12 @@ public class BoardDao {
 	
 	public void insertBoard(BoardVo vo) throws ClassNotFoundException, SQLException{
 		conn = getConnection();
-		String sql = "insert into Board values(board_no_seq.nextval,?,?,?,?,?,sysdate)";
+		String sql = "insert into Board values(board_no_seq.nextval,?,?,?,?,0,sysdate)";
 		stmt = conn.prepareStatement(sql);
 		stmt.setString(1, vo.getTitle());
 		stmt.setString(2, vo.getContent());
 		stmt.setLong(3, vo.getMemberNo());
 		stmt.setString(4, vo.getMemberName());
-		stmt.setLong(5, vo.getViewCnt());
 		stmt.executeUpdate();
 		
 		if(stmt!=null)stmt.close();
@@ -64,10 +63,9 @@ public class BoardDao {
 	}
 	public void updateBoardViewCnt(BoardVo vo) throws ClassNotFoundException, SQLException{
 		conn = getConnection();
-		String sql = "update Board set view_cnt= ? where no = ?";
+		String sql = "update Board set view_cnt= view_cnt+1 where no = ?";
 		stmt = conn.prepareStatement(sql);
-		stmt.setLong(1, vo.getViewCnt());
-		stmt.setLong(2, vo.getNo());
+		stmt.setLong(1, vo.getNo());
 		stmt.executeUpdate();
 		
 		if(stmt!=null)stmt.close();
@@ -101,6 +99,29 @@ public class BoardDao {
 		conn = getConnection();
 		String sql = "select * from Board order by no desc";
 		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		List<BoardVo> list = new ArrayList<BoardVo>();
+		while(rs.next()){
+			BoardVo vo = new BoardVo();
+			vo.setNo(rs.getLong(1));
+			vo.setTitle(rs.getString(2));
+			vo.setContent(rs.getString(3));
+			vo.setMemberNo(rs.getLong(4));
+			vo.setMemberName(rs.getString(5));
+			vo.setViewCnt(rs.getLong(6));
+			vo.setRegDate(rs.getDate(7));
+			list.add(vo);
+		}
+		if(rs!=null)rs.close();
+		if(stmt!=null)stmt.close();
+		if(conn!=null)conn.close();
+		return list;
+	}
+	public List<BoardVo> selectBoardByKeyword(String word) throws ClassNotFoundException, SQLException{
+		conn = getConnection();
+		String sql = "select * from Board where title like ? order by no desc";
+		stmt = conn.prepareStatement(sql);
+		stmt.setString(1, "%"+word+"%");
 		rs = stmt.executeQuery();
 		List<BoardVo> list = new ArrayList<BoardVo>();
 		while(rs.next()){

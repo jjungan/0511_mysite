@@ -17,12 +17,14 @@
 				<form method="post" action="/mysite/guestbook">
 					<input type="hidden" name="a" value="delete">
 					<input type='hidden' name="no" value="${no }">
-					<label>비밀번호</label>
-					<input type="password" name="password">
-					<br><span style="color: blue">${msg }</span>
-					<input type="submit" value="확인">
+					<div id="deleteform">
+						<label>비밀번호</label>
+						<input type="password" name="password">
+						<input  TYPE="IMAGE" src="/mysite/assets/images/check.png" name="Submit" value="Submit" >
+						<span style="color: blue">${msg }</span>
+					</div>
 				</form>
-				<a href="/mysite/guestbook?a=gusetbook">방명록 리스트</a>
+				<a href="/mysite/guestbook?a=guestbooklist">방명록 리스트로</a>
 			</div>
 		</div>
 		<div id="navigation">

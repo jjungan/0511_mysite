@@ -6,6 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="/mysite/assets/css/board.css" rel="stylesheet" type="text/css">
 <title>Insert title here</title>
+<script type="text/javascript" src="/mysite/jquery/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#deleteBtn").click(function(){
+			location.href = '/mysite/board?a=delete&no='+${board.no};
+		});
+	});
+</script>
 </head>
 <body>
 	<div id="container">
@@ -13,34 +21,37 @@
 			<jsp:include page="/views/include/header.jsp" flush="false" />
 		</div>
 		<div id="content">
+		<form action="/mysite/board" method="post">
+			<input type="hidden" name="a" value="update">
+			<input type="hidden" name="no" value="${board.no }">
 			<table id="insertTable">
 				<tr>
 					<th>title</th>
-					<td colspan="23" id="titleTd"><input type="text" id="title" name="title"></td>
+					<td colspan="23" id="titleTd"><input type="text" id="title" name="title" value="${board.title }"></td>
 				</tr>
 				<tr>
 					<th>name</th>
-					<td id="nameTd"><input type="text" id="name" value="이정안" readonly="readonly"></td>
+					<td id="nameTd"><input type="text" name="name" id="name" value="${board.memberName }" readonly="readonly"></td>
 					<th>hit</th>
-					<td id="viewCntTd"><input type="text" id="viewCnt" name="viewCnt" value="10" readonly="readonly"></td>
+					<td id="viewCntTd"><input type="text" id="viewCnt" name="viewCnt" value="${board.viewCnt }" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td colspan="4" id=textareaTd>
-						<textarea id="textarea" name="content">
-						</textarea>
+						<textarea id="textarea" name="content">${board.content }</textarea>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="4" id="submitTd">
-						<input type="button" id="updateBtn" value="수정" >
+						<input type="submit" id="updateBtn" value="수정" >
 						<input type="button" id="deleteBtn" value="삭제" >
 					</td>
 				</tr>
 			</table>
+		</form>
 		</div>
 		<div id="navigation">
 			<c:import url="/views/include/navigation.jsp">
-				<c:param name="type" value="guestbook"></c:param>
+				<c:param name="type" value="board"></c:param>
 			</c:import>
 		</div>
 		<div id="footer">

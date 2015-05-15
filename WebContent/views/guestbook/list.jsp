@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%pageContext.setAttribute("newLineChar","\n"); %>
 <!doctype html>
 <html>
 <head>
@@ -16,31 +18,35 @@
 			<div id="guestbook">
 				<form action="/mysite/guestbook" method="post">
 					<input type="hidden" name="a" value="insert">
-					<table>
+					<table id="insertTable">
 						<tr>
-							<td>이름</td><td><input type="text" name="name"></td>
-							<td>비밀번호</td><td><input type="password" name="pass"></td>
+							<th>이름</th><td><input type="text" name="name" required="required"></td>
+							<th>비밀번호</th><td><input type="password" name="pass" required="required"></td>
 						</tr>
 						<tr>
-							<td colspan=4><textarea name="content" id="content"></textarea></td>
-						</tr>
-						<tr>
-							<td colspan=4 align=right><input type="submit" VALUE=" 확인 "></td>
+							<td colspan=4 id="textareaTd"><textarea name="content" id="content" required="required"></textarea></td>
 						</tr>
 					</table>
+					<div id="submitBtn">
+						<input type="submit" VALUE=" 저장하기 ">
+					</div>
 				</form>
 				<ul>
 					<li>
-						<table>
+						<table id="listTable">
 						<c:forEach items="${list }" var="vo" varStatus="status">
 							<tr>
-								<td>${status.count }</td>
+								<td class="indexTd">${status.count }</td>
 								<td>${vo.name }</td>
 								<td>${vo.regDate }</td>
-								<td><a href="/mysite/guestbook?a=deleteform&no=${vo.no }">삭제</a></td>
+								<td class="deleteTd">
+									<a href="/mysite/guestbook?a=deleteform&no=${vo.no }">
+										<img alt="deleteimg" src="/mysite/assets/images/delete.png">
+									</a>
+								</td>
 							</tr>
 							<tr>
-								<td colspan=4>${vo.message }</td>
+								<td colspan=4 class="messageTd">${fn:replace(vo.message,newLineChar,"<br>")}</td>
 							</tr>
 						</c:forEach>
 						</table>
